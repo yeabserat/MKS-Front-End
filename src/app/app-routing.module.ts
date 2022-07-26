@@ -9,7 +9,6 @@ import { LocationComponent } from './setup/components/container/location/locatio
 import { RouteComponent } from './setup/components/container/route/route.component';
 import { TransportPlanItemComponent } from './setup/components/container/transport-plan-item/transport-plan-item.component';
 import { TransportPlanComponent } from './setup/components/container/transport-plan/transport-plan.component';
-import { TransporterComponent } from './setup/components/container/transporter/transporter.component';
 import { UnitOfMeasureComponent } from './setup/components/container/unit-of-measure/unit-of-measure.component';
 
 const routes: Routes = [

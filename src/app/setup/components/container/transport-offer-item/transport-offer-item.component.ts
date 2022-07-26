@@ -31,7 +31,7 @@ export class TransportOfferItemComponent implements OnInit {
   columns: Column[] = [
     { name: 'transport_offer_id', label: 'Transport Offer' },
     { name: 'transport_bid_item_id', label: 'Transport Bid Item ID' },
-    { name: 'price', label: 'Offer Date' },
+    { name: 'price', label: 'Price' },
   ];
 
   offerItems: OfferItem[] = [];
