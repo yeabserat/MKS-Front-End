@@ -40,7 +40,7 @@
       <td *ngFor="let column of columns">
        <span *ngIf="column.type==='time'">{{d[column.name] |shortDate |date:'short'}}</span>
        <span *ngIf="column.type==='date'">{{d[column.name] |date:'medium'}}</span>
-       <span *ngIf="column.type===undefined">{{d[column.name]}}</span>
+       <span *ngIf="column.type===undefined ">{{d[column.name]}}</span>
       </td>
       <ng-container *ngIf="hasAction">
         <td>

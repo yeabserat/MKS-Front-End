@@ -20,7 +20,8 @@ import { AppCommonModule } from '../app.common.module';
   exports: [
     ListComponent,
     ToolbarComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
+
   ]
 })
 export class SharedModule { }

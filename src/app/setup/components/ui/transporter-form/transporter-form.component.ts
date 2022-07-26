@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-transporter-form',
@@ -13,7 +13,8 @@ export class TransporterFormComponent implements OnInit {
   form: FormGroup;
 
   constructor(private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<TransporterFormComponent>) {
     this.form = this.fb.group({
       id: data.id,
       code: data.code,
@@ -29,5 +30,9 @@ export class TransporterFormComponent implements OnInit {
   onSubmit(): void {
     const payload = this.form.value;
     this.formSubmit.emit(payload);
+  }
+
+  onCancel(): void {
+    this.dialogRef.close();
   }
 }

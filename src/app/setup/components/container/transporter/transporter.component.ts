@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Column } from '../../../../shared/models/column.model';
 import { EMPTY_TRANSPORTER, Transporter } from '../../../models/transporter.model';
