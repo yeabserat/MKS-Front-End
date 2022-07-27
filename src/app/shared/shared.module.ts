@@ -24,7 +24,6 @@ import { TreeListComponent } from './components/tree-list/tree-list.component';
     ToolbarComponent,
     TimeAgoPipe,
     TreeListComponent
-
   ]
 })
 export class SharedModule { }

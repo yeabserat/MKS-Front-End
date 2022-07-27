@@ -1,0 +1,34 @@
+<h3 mat-dialog-title>New Transporter</h3>
+<div mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field class="full-width">
+            <mat-label>Transport Bid</mat-label>
+            <mat-select formControlName="transport_bid_id">
+                <mat-option value="" selected></mat-option>
+                <mat-option *ngFor="let bid of transport_bids" [value]="bid.id">{{bid.reference_no}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('transport_bid_id').touched && form.get('transport_bid_id').invalid">
+                {{getErrorMessage('transport_bid_id')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Transporter</mat-label>
+            <mat-select formControlName="transporter_id">
+                <mat-option value="" selected></mat-option>
+                <mat-option *ngFor="let transporter of transporters" [value]="transporter.id">{{transporter.code}}:
+                    {{transporter.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('transporter_id').touched && form.get('transporter_id').invalid">
+                {{getErrorMessage('transporter_id')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Offer Date</mat-label>
+            <input type="date" matInput formControlName="offer_date">
+            <mat-error *ngIf="form.get('offer_date').touched && form.get('offer_date').invalid">
+                {{getErrorMessage('offer_date')}}</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-raised-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button [disabled]="this.form.invalid" type="submit" (click)="onSubmit()">Save</button>
+</div>

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -13,16 +13,17 @@ export class TransporterFormComponent implements OnInit {
   form: FormGroup;
 
   constructor(private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<TransporterFormComponent>) {
+    public dialogRef: MatDialogRef<TransporterFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,) {
     this.form = this.fb.group({
-      id: data.id,
-      code: data.code,
-      name: data.name,
-      address: data.address,
-      contact_phone: data.contact_phone
+      id: [data.id, [Validators.required]],
+      code: [data.code, [Validators.required]],
+      name: [data.name, [Validators.required]],
+      address: [data.address, [Validators.required]],
+      contact_phone: [data.contact_phone, [Validators.required]]
+
     });
-   }
+  }
 
   ngOnInit(): void {
   }
@@ -30,6 +31,12 @@ export class TransporterFormComponent implements OnInit {
   onSubmit(): void {
     const payload = this.form.value;
     this.formSubmit.emit(payload);
+  }
+
+  getErrorMessage(formControl: string): string | void {
+    if (this.form.get(formControl).hasError('required')) {
+      return 'This field is required';
+    }
   }
 
   onCancel(): void {
